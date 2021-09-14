@@ -1,0 +1,45 @@
+* {
+	/* outline: 1px solid black; */
+}
+
+.App {
+	text-align: center;
+}
+
+#heading-main {
+	margin-top: 7rem;
+	margin-bottom: 5rem;
+}
+
+#postBtn {
+	color: rgb(15, 15, 15);
+	margin-bottom: 7rem;
+	font-size: 1.5rem;
+	border-radius: 2rem;
+	background: rgba(255, 255, 255, 0.75);
+	text-transform: none;
+}
+#postBtn:hover {
+	background: rgba(255, 255, 255);
+}
+
+.layer {
+	background-color: rgba(0, 0, 0, 0.5);
+	/* position: absolute; */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+	#heading-main {
+		margin-top: 4rem;
+		margin-bottom: 3rem;
+	}
+
+	#postBtn {
+		font-size: 1rem;
+		margin-bottom: 4rem;
+	}
+}

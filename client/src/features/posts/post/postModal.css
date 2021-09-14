@@ -1,0 +1,18 @@
+* {
+	/* outline: 1px solid black; */
+}
+
+.right-align-container {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+#modal-img {
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+}
+
+img {
+	max-width: 100%;
+}
