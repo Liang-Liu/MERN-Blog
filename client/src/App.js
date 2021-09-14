@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
+import { Link } from "react-router-dom";
 
 import "./App.css";
 
@@ -27,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
 		backgroundPosition: "center",
 		minHeight: "10rem",
 		display: "flex",
+	},
+	link: {
+		textDecoration: "none",
+		color: "inherit",
 	},
 }));
 
@@ -60,13 +65,25 @@ function App() {
 											Share Your Moments
 										</Typography>
 										{user.loggedInUserData._id ? (
-											<Button id="postBtn" variant="contained" href="/post">
-												Share
-											</Button>
+											<Link to="/post" className={classes.link}>
+												<Button
+													id="postBtn"
+													variant="contained"
+													className={classes.link}
+												>
+													Share
+												</Button>
+											</Link>
 										) : (
-											<Button id="postBtn" variant="contained" href="/login">
-												Share
-											</Button>
+											<Link to="/login" className={classes.link}>
+												<Button
+													id="postBtn"
+													variant="contained"
+													className={classes.link}
+												>
+													Share
+												</Button>
+											</Link>
 										)}
 									</div>
 								</Paper>
