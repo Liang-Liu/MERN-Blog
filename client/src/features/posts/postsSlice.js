@@ -1,10 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = { posts: [], status: "idle" };
 
+const baseUrl = "http://ll-mern-blog-app.herokuapp.com/";
+
 export const fetchAllPostsAsync = createAsyncThunk(
 	"posts/fetchAllPosts",
 	async () => {
-		const response = await fetch("http://localhost:5000/posts");
+		const response = await fetch(`${baseUrl}posts`);
 		const data = await response.json();
 		return data;
 	}
@@ -32,7 +34,7 @@ export const postsSlice = createSlice({
 
 export const createPostAsync = (postObj) => async (dispatch, getState) => {
 	const token = JSON.parse(localStorage.getItem("user")).token;
-	await fetch("http://localhost:5000/posts", {
+	await fetch(`${baseUrl}posts`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -46,7 +48,7 @@ export const createPostAsync = (postObj) => async (dispatch, getState) => {
 export const updatePostAsync = (postObj) => async (dispatch, getState) => {
 	const token = JSON.parse(localStorage.getItem("user")).token;
 
-	await fetch(`http://localhost:5000/posts/${postObj._id}`, {
+	await fetch(`${baseUrl}posts/${postObj._id}`, {
 		method: "PUT",
 		headers: {
 			"Content-Type": "application/json",
@@ -60,7 +62,7 @@ export const updatePostAsync = (postObj) => async (dispatch, getState) => {
 export const deletePostAsync = (postObj) => async (dispatch, getState) => {
 	const token = JSON.parse(localStorage.getItem("user")).token;
 
-	await fetch(`http://localhost:5000/posts/${postObj._id}`, {
+	await fetch(`${baseUrl}posts/${postObj._id}`, {
 		method: "DELETE",
 		headers: {
 			Authorization: `Bearer ${token}`,

@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = { loggedInUserData: {} };
 
+const baseUrl = "http://ll-mern-blog-app.herokuapp.com/";
+
 const userSlice = createSlice({
 	name: "user",
 	initialState,
@@ -18,7 +20,7 @@ const userSlice = createSlice({
 });
 
 export const loginUserAsync = (userData) => async (dispatch) => {
-	const res = await fetch("http://localhost:5000/user/signin", {
+	const res = await fetch(`${baseUrl}user/signin`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -38,7 +40,7 @@ export const loginUserAsync = (userData) => async (dispatch) => {
 };
 
 export const signUpUserAsync = (userData) => async (dispatch) => {
-	const res = await fetch("http://localhost:5000/user/signup", {
+	const res = await fetch(`${baseUrl}user/signup`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

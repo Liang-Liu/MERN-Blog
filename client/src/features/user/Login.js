@@ -161,7 +161,7 @@ export default function Login() {
 						type="submit"
 						fullWidth
 						variant="contained"
-						color="primary"
+						style={{ color: "white", background: "#ff5722" }}
 						className={classes.submit}
 						onClick={async (e) => {
 							e.preventDefault();
