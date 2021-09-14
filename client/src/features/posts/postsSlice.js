@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = { posts: [], status: "idle" };
 
-const baseUrl = "http://ll-mern-blog-app.herokuapp.com/";
+const baseUrl = "https://ll-mern-blog-app.herokuapp.com/";
 
 export const fetchAllPostsAsync = createAsyncThunk(
 	"posts/fetchAllPosts",

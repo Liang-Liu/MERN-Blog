@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = { loggedInUserData: {} };
 
-const baseUrl = "http://ll-mern-blog-app.herokuapp.com/";
+const baseUrl = "https://ll-mern-blog-app.herokuapp.com/";
 
 const userSlice = createSlice({
 	name: "user",
