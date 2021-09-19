@@ -10,7 +10,7 @@
 - [Description](#description)
 - [Tech Stack](#tech-stack)
 - [Key Features](#key-features)
-- [Project setup](#project-setup)
+- [Project Setup](#project-setup)
 - [Future Scope](#future-scope)
 
 ## Live Demo
@@ -68,7 +68,7 @@ The backend of the app is hosted on **Heroku**, frontend is hosted on **Netlify*
 - User avatar
 - Responsive design
 
-## Project setup
+## Project Setup
 
 1. Go to directory "server", and run "npm install".
 2. In server directory, run "npm run start".
