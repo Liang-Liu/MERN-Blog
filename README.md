@@ -1,8 +1,8 @@
 <h1 align="center"> Photo Blog <br> (MERN stack) </h1>
 
-<i>A MERN stack photo blogging PWA(Progressive Web App), with user signIn/signUp, user authentication & authorization feature.</i>
+<p  align="center"><i>A MERN stack photo blogging PWA(Progressive Web App), with user signIn/signUp, user authentication & authorization feature.</i></p>
 
-![ll-mern-blog-app-client.netlify.app_1080](./readme_img/ll-mern-blog-app-client.netlify.app_1080.png)
+![App Preview](./readme_img/ll-mern-blog-app-client.netlify.app_1080.png)
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@
 
 ## Live Demo
 
-<h3 align="center"><a  href=https://ll-mern-blog-app-client.netlify.app/">Live Demo Link</a></h3>
+<h2 align="center"><a  href=https://ll-mern-blog-app-client.netlify.app/">Live Demo Link</a></h2>
 
 <img src="./readme_img/blog Animation.gif" alt="Animation GIF">
 
