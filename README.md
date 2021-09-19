@@ -15,7 +15,7 @@
 
 ## Live Demo
 
-<h2 align="center"><a  href=https://ll-mern-blog-app-client.netlify.app/">Live Demo Link</a></h2>
+<h2 align="center"><a  href="https://ll-mern-blog-app-client.netlify.app/">Live Demo Link</a></h2>
 
 <img src="./readme_img/blog Animation.gif" alt="Animation GIF">
 
