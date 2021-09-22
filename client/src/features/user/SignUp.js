@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+import { Link } from "react-router-dom";
+
 import { signUpUserAsync } from "./userSlice";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+
+import logo from "../../images/logo.jpg";
 
 function validateEmail(email) {
 	const re =
@@ -38,6 +40,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 	submit: {
 		margin: theme.spacing(3, 0, 2),
+	},
+	link: {
+		textDecoration: "none",
+		color: "#1565c0",
+		"&:hover": {
+			textDecoration: "underline",
+		},
 	},
 }));
 
@@ -130,9 +139,7 @@ export default function SignUp() {
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
 			<div className={classes.paper}>
-				<Avatar className={classes.avatar}>
-					<LockOutlinedIcon />
-				</Avatar>
+				<Avatar alt="logo" src={logo}></Avatar>
 				<Typography component="h1" variant="h5">
 					Sign up
 				</Typography>
@@ -255,7 +262,7 @@ export default function SignUp() {
 
 					<Grid container justifyContent="flex-end">
 						<Grid item>
-							<Link href="/login" variant="body2">
+							<Link to="/login" className={classes.link}>
 								Already have an account? Sign in
 							</Link>
 						</Grid>

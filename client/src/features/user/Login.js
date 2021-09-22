@@ -7,10 +7,10 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
+import { Link } from "react-router-dom";
 
-import Link from "@material-ui/core/Link";
+import logo from "../../images/logo.jpg";
 import Grid from "@material-ui/core/Grid";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
@@ -38,6 +38,13 @@ const useStyles = makeStyles((theme) => ({
 	},
 	submit: {
 		margin: theme.spacing(2, 0, 2),
+	},
+	link: {
+		textDecoration: "none",
+		color: "#1565c0",
+		"&:hover": {
+			textDecoration: "underline",
+		},
 	},
 }));
 
@@ -87,9 +94,7 @@ export default function Login() {
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
 			<div className={classes.paper}>
-				<Avatar className={classes.avatar}>
-					<LockOutlinedIcon />
-				</Avatar>
+				<Avatar alt="logo" src={logo}></Avatar>
 				<Typography component="h1" variant="h5">
 					Sign in
 				</Typography>
@@ -181,8 +186,8 @@ export default function Login() {
 
 					<Grid container>
 						<Grid item>
-							<Link href="/signup" variant="body2">
-								{"Don't have an account? Sign Up"}
+							<Link to="/signup" className={classes.link}>
+								Don't have an account? Sign Up
 							</Link>
 						</Grid>
 					</Grid>
