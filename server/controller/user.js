@@ -1,5 +1,6 @@
 const Users = require("../models/users");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 // DEV -- GET all user
 const getAllUsers = async (req, res) => {
@@ -13,16 +14,17 @@ const userSignUp = async (req, res) => {
 		const { firstName, lastName, email, password, imgURL } = req.body;
 
 		const existingUser = await Users.findOne({ email });
-		// console.log(existingUser);
 		if (existingUser) {
 			return res.status(400).json({ msg: `${email} already exist` });
 		}
+
+		const hashedPW = await bcrypt.hash(password, 10);
 
 		const User = new Users({
 			firstName,
 			lastName,
 			email,
-			password,
+			password: hashedPW,
 			imgURL,
 		});
 
@@ -33,8 +35,6 @@ const userSignUp = async (req, res) => {
 		});
 
 		res.json({ msg: "Users created", existingUser: User, token });
-
-		// res.status(201).json({ msg: "Users created", User });
 	} catch (e) {
 		console.log(e);
 	}
@@ -45,12 +45,13 @@ const userSignIn = async (req, res) => {
 	const { firstName, lastName, email, password, imgURL } = req.body;
 	try {
 		const existingUser = await Users.findOne({ email });
-		// console.log(existingUser);
 		if (!existingUser) {
 			return res.status(404).json({ msg: `email: ${email} is not found` });
 		}
 
-		if (existingUser.password !== password) {
+		const correctPW = await bcrypt.compare(password, existingUser.password);
+
+		if (!correctPW) {
 			return res.status(400).json({ msg: "wrong password" });
 		}
 

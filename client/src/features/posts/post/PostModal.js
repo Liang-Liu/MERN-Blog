@@ -34,9 +34,6 @@ function PostModal({ postData }) {
 							<Typography>
 								{user?.firstName} {user?.lastName}
 							</Typography>
-							<Typography color="textSecondary">
-								{user?.firstName} {user?.lastName}
-							</Typography>
 						</div>
 					</div>
 				</div>
