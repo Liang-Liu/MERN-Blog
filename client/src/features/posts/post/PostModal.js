@@ -13,7 +13,7 @@ function PostModal({ postData }) {
 			<div className="productModalContent">
 				<Typography
 					gutterBottom
-					variant="h3"
+					variant="h4"
 					id="modal-title"
 					color="textPrimary"
 				>
@@ -40,7 +40,7 @@ function PostModal({ postData }) {
 				<CardMedia image={imgURL} title={title} />
 				<img className="productModal" src={imgURL} alt="id" id="modal-img" />
 				<div className="modelText">
-					<Typography gutterBottom variant="h6" id="modal-content">
+					<Typography gutterBottom variant="body1" id="modal-content">
 						{content}
 					</Typography>
 				</div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { loginUserAsync } from "./userSlice";
+import { loginUserAsync, updateUser } from "./userSlice";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -14,6 +14,11 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+
+import GoogleLogin from "react-google-login";
+import GoogleButton from "react-google-button";
+
+import "./login.css";
 
 function validateEmail(email) {
 	const re =
@@ -60,6 +65,27 @@ export default function Login() {
 
 	const handleChange = (e) => {
 		setUserData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+	};
+
+	const responseGoogleSuccess = (response) => {
+		console.log(response);
+		const { profileObj, tokenId } = response;
+
+		const googleData = {
+			existingUser: {
+				firstName: profileObj.familyName,
+				lastName: profileObj.givenName,
+				email: profileObj.email,
+				imgURL: profileObj.imageUrl,
+				_id: profileObj.googleId,
+			},
+			token: tokenId,
+		};
+		dispatch(updateUser(googleData));
+		history.push("/");
+	};
+	const responseGoogleFailure = (response) => {
+		console.log(response?.error);
 	};
 
 	const formValidation = () => {
@@ -160,8 +186,6 @@ export default function Login() {
 						Sign In
 					</Button>
 
-					<h4 style={{ margin: 0 }}>or</h4>
-
 					<Button
 						type="submit"
 						fullWidth
@@ -183,6 +207,25 @@ export default function Login() {
 					>
 						Sign In as Demo User
 					</Button>
+
+					<h4 style={{ margin: 0 }}>or</h4>
+					<div id="googlediv">
+						<GoogleLogin
+							clientId="294405923730-goc4l72ko66ds4qjmt7dgdpusu27m5jp.apps.googleusercontent.com"
+							render={(renderProps) => (
+								<GoogleButton
+									// type="light"
+									onClick={(e) => {
+										renderProps.onClick(e);
+									}}
+								/>
+							)}
+							buttonText="Login"
+							onSuccess={responseGoogleSuccess}
+							onFailure={responseGoogleFailure}
+							cookiePolicy={"single_host_origin"}
+						/>
+					</div>
 
 					<Grid container>
 						<Grid item>

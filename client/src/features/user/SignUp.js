@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
-import { signUpUserAsync } from "./userSlice";
+import { signUpUserAsync, updateUser } from "./userSlice";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -16,6 +16,11 @@ import Container from "@material-ui/core/Container";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 
 import logo from "../../images/logo.jpg";
+
+import GoogleLogin from "react-google-login";
+import GoogleButton from "react-google-button";
+
+import "./login.css";
 
 function validateEmail(email) {
 	const re =
@@ -64,6 +69,27 @@ export default function SignUp() {
 	const dispatch = useDispatch();
 	let history = useHistory();
 	const classes = useStyles();
+
+	const responseGoogleSuccess = (response) => {
+		console.log(response);
+		const { profileObj, tokenId } = response;
+
+		const googleData = {
+			existingUser: {
+				firstName: profileObj.familyName,
+				lastName: profileObj.givenName,
+				email: profileObj.email,
+				imgURL: profileObj.imageUrl,
+				_id: profileObj.googleId,
+			},
+			token: tokenId,
+		};
+		dispatch(updateUser(googleData));
+		history.push("/");
+	};
+	const responseGoogleFailure = (response) => {
+		console.log(response?.error);
+	};
 
 	function previewFile(e) {
 		const file = e.target.files[0];
@@ -259,6 +285,24 @@ export default function SignUp() {
 					>
 						Sign Up
 					</Button>
+					<h4 style={{ margin: 0 }}>or</h4>
+					<div id="googlediv">
+						<GoogleLogin
+							clientId="294405923730-goc4l72ko66ds4qjmt7dgdpusu27m5jp.apps.googleusercontent.com"
+							render={(renderProps) => (
+								<GoogleButton
+									// type="light"
+									onClick={(e) => {
+										renderProps.onClick(e);
+									}}
+								/>
+							)}
+							buttonText="Login"
+							onSuccess={responseGoogleSuccess}
+							onFailure={responseGoogleFailure}
+							cookiePolicy={"single_host_origin"}
+						/>
+					</div>
 
 					<Grid container justifyContent="flex-end">
 						<Grid item>
