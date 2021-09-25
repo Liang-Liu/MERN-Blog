@@ -1,6 +1,6 @@
 <h1 align="center"> Photo Blog <br> (MERN stack) </h1>
 
-<p  align="center"><i>A MERN stack photo blogging PWA(Progressive Web App), with user signIn/signUp, user authentication & authorization feature.</i></p>
+<p  align="center"><i>A MERN stack photo blogging PWA(Progressive Web App), with user SignIn/SignUp, Google OAuth SignIn, user authentication & authorization feature.</i></p>
 
 ![App Preview](./readme_img/ll-mern-blog-app-client.netlify.app_1080.png)
 
@@ -25,7 +25,7 @@
 
 ## Description
 
-A MERN stack photo blogging PWA(Progressive Web App), with user signIn/signUp, user authentication & authorization feature.
+A MERN stack photo blogging PWA(Progressive Web App), with user signIn/signUp, Google OAuth SignIn, user authentication & authorization feature.
 
 Created full CRUD API to provides features of reading, creating, editing, and deleting posts.
 
@@ -48,8 +48,9 @@ The backend of the app is hosted on **Heroku**, frontend is hosted on **Netlify*
 
 - Node.js
 - Express.js
-- JSON Web Tokens/JWT Auth:
-- Password Bcrypt:
+- JSON Web Tokens/JWT Auth
+- Google OAuth 2.0
+- Password Bcrypt
 - Mongoose
 - MongoDB Atlas
 
@@ -65,6 +66,7 @@ The backend of the app is hosted on **Heroku**, frontend is hosted on **Netlify*
 - Read, create posts & edit/delete of your own posts
 - Upload blog post images
 - User Sign in & Sign up
+- Sign in with Google using Google OAuth 2.0
 - User avatar
 - Responsive design
 
